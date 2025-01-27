@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Search Console 驗證 -->
+    <meta name="google-site-verification" content="請將這裡替換為 Google 提供的驗證碼">
+    <!-- Bing Webmaster Tools 驗證 -->
+    <meta name="msvalidate.01" content="請將這裡替換為 Bing 提供的驗證碼">
+    <title>个人主页</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5; /* 浅色背景 */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            background-color: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* 轮播图样式 */
+        .carousel-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.7);
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255,255,255,0.9);
+        }
+
+        .prev {
+            left: 1rem;
+        }
+
+        .next {
+            right: 1rem;
+        }
+
+        /* 个人介绍样式 */
+        .intro {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text {
+            text-align: left;
+        }
+
+        .intro-text h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .tech-highlights {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-highlight {
+            background: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* 社交媒体链接样式 */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: #333;
+            font-size: 1.5rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: #007bff;
+        }
+
+        /* 添加作品集样式 */
+        .portfolio {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .portfolio h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .portfolio-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 300px; /* 固定高度确保展示区域一致 */
+            object-fit: cover; /* 确保图片填充整个区域 */
+            border-radius: 8px 8px 0 0;
+            background: #000; /* 添加黑色背景 */
+        }
+
+        .portfolio-item .description {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* 添加视频样式 */
+        .portfolio-item video {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px 8px 0 0;
+            background: #000;
+            max-height: 600px;
+        }
+
+        /* 添加双视频容器样式 */
+        .dual-video-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .carousel-container {
+                margin: 1rem;
+            }
+
+            .intro-content {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dual-video-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#home">首页</a>
+            <a href="#about">关于我</a>
+            <a href="#portfolio">作品集</a>
+            <a href="#contact">联系我</a>
+        </div>
+    </nav>
+
+    <!-- 轮播图 -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <!-- 这里添加你的图片 -->
+            <img src="image1.jpg" alt="照片1">
+            <img src="image2.jpg" alt="照片2">
+            <img src="image3.jpg" alt="照片3">
+        </div>
+        <button class="carousel-btn prev">❮</button>
+        <button class="carousel-btn next">❯</button>
+    </div>
+
+    <!-- 个人介绍 -->
+    <div class="intro">
+        <div class="intro-content">
+            <div class="profile-photo">
+                <img src="assets/images/profile.jpg" alt="个人照片">
+            </div>
+            <div class="intro-text">
+                <h2>Markerless Motion Capture 研究</h2>
+                <p>我专注于无标记动作捕捉（Markerless Motion Capture）技术的研究与应用。这是一项革命性的技术，无需在被测对象身上佩戴任何标记点或传感器，就能通过计算机视觉和深度学习算法准确捕捉人体动作。</p>
+                <p>目前主要研究方向包括：</p>
+                <div class="tech-highlights">
+                    <span class="tech-highlight">多视角人体姿态估计</span>
+                    <span class="tech-highlight">实时动作捕捉</span>
+                    <span class="tech-highlight">深度学习算法优化</span>
+                    <span class="tech-highlight">3D人体重建</span>
+                </div>
+                <p style="margin-top: 1rem;">通过整合 OpenPose、MediaPipe 和 AlphaPose 等先进技术，致力于提高动作捕捉的准确性和实时性，为运动分析、康复医疗、虚拟现实等领域提供创新解决方案。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 在社交媒体链接之前添加作品集部分 -->
+    <div class="portfolio" id="portfolio">
+        <h2>作品集展示</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="assets/images/openpose.gif" alt="OpenPose 演示">
+                <div class="description">
+                    <h3>OpenPose 项目</h3>
+                    <p>基于 OpenPose 的人体姿态检测</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <video controls preload="metadata" playsinline>
+                    <source src="assets/videos/mediapip_compressed.mp4" type="video/mp4">
+                    您的浏览器不支持视频标签。
+                </video>
+                <div class="description">
+                    <h3>MediaPipe 演示</h3>
+                    <p>使用 MediaPipe 实现的实时人体姿态估计</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="assets/images/Alphapose.gif" alt="AlphaPose 演示">
+                <div class="description">
+                    <h3>AlphaPose 项目</h3>
+                    <p>使用 AlphaPose 进行人体姿态估计</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="dual-video-container">
+                    <video controls controlsList="novolume" preload="metadata" playsinline muted>
+                        <source src="assets/videos/mobile9_compressed.mp4" type="video/mp4">
+                        您的浏览器不支持视频标签。
+                    </video>
+                    <video controls controlsList="novolume" preload="metadata" playsinline muted>
+                        <source src="assets/videos/mobile8_compressed.mp4" type="video/mp4">
+                        您的浏览器不支持视频标签。
+                    </video>
+                </div>
+                <div class="description">
+                    <h3>多视角人体姿态估计</h3>
+                    <p>左：摄像头1视角 | 右：摄像头2视角</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="dual-video-container">
+                    <video controls controlsList="novolume" preload="metadata" playsinline muted>
+                        <source src="assets/videos/cam1_1_compressed.mp4" type="video/mp4">
+                        您的浏览器不支持视频标签。
+                    </video>
+                    <video controls preload="metadata" playsinline>
+                        <source src="assets/videos/CHYU_compressed.mp4" type="video/mp4">
+                        您的浏览器不支持视频标签。
+                    </video>
+                </div>
+                <div class="description">
+                    <h3>骨架检测对比演示</h3>
+                    <p>左：原始视频 | 右：基于深度学习的人体姿态估计效果</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 社交媒体链接 -->
+    <div class="social-links">
+        <a href="#" title="Instagram">📷</a>
+        <a href="#" title="Twitter">🐦</a>
+        <a href="#" title="Facebook">👤</a>
+        <a href="#" title="LinkedIn">💼</a>
+    </div>
+
+    <script>
+        // 轮播图功能
+        const carousel = document.querySelector('.carousel');
+        const images = document.querySelectorAll('.carousel img');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        
+        let currentIndex = 0;
+        
+        // 自动轮播
+        function autoSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        }
+        
+        let slideInterval = setInterval(autoSlide, 3000);
+        
+        // 更新轮播图位置
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        
+        // 上一张/下一张按钮功能
+        prevBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateCarousel();
+            slideInterval = setInterval(autoSlide, 3000);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+            slideInterval = setInterval(autoSlide, 3000);
+        });
+        
+        // 鼠标悬停时暂停自动轮播
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(autoSlide, 3000);
+        });
+    </script>
+</body>
+</html>
