@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Search Console 驗證 -->
-    <meta name="google-site-verification" content="請將這裡替換為 Google 提供的驗證碼">
-    <!-- Bing Webmaster Tools 驗證 -->
-    <meta name="msvalidate.01" content="請將這裡替換為 Bing 提供的驗證碼">
-    <title>个人主页</title>
+    <!-- Google Search Console verification -->
+    <meta name="google-site-verification" content="请将这里替换为 Google 提供的验证码">
+    <!-- Bing Webmaster Tools verification -->
+    <meta name="msvalidate.01" content="请将这里替换为 Bing 提供的验证码">
+    <title>Personal Portfolio</title>
     <style>
         /* 全局样式 */
         * {
@@ -217,11 +217,10 @@
         /* 添加视频样式 */
         .portfolio-item video {
             width: 100%;
-            height: auto;
-            object-fit: contain;
+            height: 300px; /* 与图片保持相同的固定高度 */
+            object-fit: cover; /* 改为cover确保填充整个区域，与图片一致 */
             border-radius: 8px 8px 0 0;
             background: #000;
-            max-height: 600px;
         }
 
         /* 添加双视频容器样式 */
@@ -266,10 +265,10 @@
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-links">
-            <a href="#home">首页</a>
-            <a href="#about">关于我</a>
-            <a href="#portfolio">作品集</a>
-            <a href="#contact">联系我</a>
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
@@ -277,9 +276,9 @@
     <div class="carousel-container">
         <div class="carousel">
             <!-- 这里添加你的图片 -->
-            <img src="image1.jpg" alt="照片1">
-            <img src="image2.jpg" alt="照片2">
-            <img src="image3.jpg" alt="照片3">
+            <img src="image1.jpg" alt="Photo 1">
+            <img src="image2.jpg" alt="Photo 2">
+            <img src="image3.jpg" alt="Photo 3">
         </div>
         <button class="carousel-btn prev">❮</button>
         <button class="carousel-btn next">❯</button>
@@ -289,51 +288,51 @@
     <div class="intro">
         <div class="intro-content">
             <div class="profile-photo">
-                <img src="assets/images/profile.jpg" alt="个人照片">
+                <img src="assets/images/profile.jpg" alt="Profile Photo">
             </div>
             <div class="intro-text">
-                <h2>Markerless Motion Capture 研究</h2>
-                <p>我专注于无标记动作捕捉（Markerless Motion Capture）技术的研究与应用。这是一项革命性的技术，无需在被测对象身上佩戴任何标记点或传感器，就能通过计算机视觉和深度学习算法准确捕捉人体动作。</p>
-                <p>目前主要研究方向包括：</p>
+                <h2>Markerless Motion Capture Research</h2>
+                <p>I focus on researching and applying Markerless Motion Capture technology. This revolutionary technology accurately captures human movement using computer vision and deep learning algorithms without requiring markers or sensors on the subject.</p>
+                <p>My current research directions include:</p>
                 <div class="tech-highlights">
-                    <span class="tech-highlight">多视角人体姿态估计</span>
-                    <span class="tech-highlight">实时动作捕捉</span>
-                    <span class="tech-highlight">深度学习算法优化</span>
-                    <span class="tech-highlight">3D人体重建</span>
+                    <span class="tech-highlight">Multi-view Human Pose Estimation</span>
+                    <span class="tech-highlight">Real-time Motion Capture</span>
+                    <span class="tech-highlight">Deep Learning Algorithm Optimization</span>
+                    <span class="tech-highlight">3D Human Reconstruction</span>
                 </div>
-                <p style="margin-top: 1rem;">通过整合 OpenPose、MediaPipe 和 AlphaPose 等先进技术，致力于提高动作捕捉的准确性和实时性，为运动分析、康复医疗、虚拟现实等领域提供创新解决方案。</p>
+                <p style="margin-top: 1rem;">By integrating advanced technologies such as OpenPose, MediaPipe, and AlphaPose, I am committed to improving the accuracy and real-time performance of motion capture, providing innovative solutions for fields including sports analysis, rehabilitation medicine, and virtual reality.</p>
             </div>
         </div>
     </div>
 
     <!-- 在社交媒体链接之前添加作品集部分 -->
     <div class="portfolio" id="portfolio">
-        <h2>作品集展示</h2>
+        <h2>Portfolio Showcase</h2>
         <div class="portfolio-grid">
             <div class="portfolio-item">
-                <img src="assets/images/openpose.gif" alt="OpenPose 演示">
+                <img src="assets/images/openpose.gif" alt="OpenPose Demo">
                 <div class="description">
-                    <h3>OpenPose 项目</h3>
-                    <p>基于 OpenPose 的人体姿态检测</p>
+                    <h3>OpenPose Project</h3>
+                    <p>Human Pose Detection Based on OpenPose</p>
                 </div>
             </div>
 
             <div class="portfolio-item">
                 <video controls preload="metadata" playsinline>
                     <source src="assets/videos/mediapip_compressed.mp4" type="video/mp4">
-                    您的浏览器不支持视频标签。
+                    Your browser does not support the video tag.
                 </video>
                 <div class="description">
-                    <h3>MediaPipe 演示</h3>
-                    <p>使用 MediaPipe 实现的实时人体姿态估计</p>
+                    <h3>MediaPipe Demo</h3>
+                    <p>Real-time Human Pose Estimation Using MediaPipe</p>
                 </div>
             </div>
             
             <div class="portfolio-item">
-                <img src="assets/images/Alphapose.gif" alt="AlphaPose 演示">
+                <img src="assets/images/Alphapose.gif" alt="AlphaPose Demo">
                 <div class="description">
-                    <h3>AlphaPose 项目</h3>
-                    <p>使用 AlphaPose 进行人体姿态估计</p>
+                    <h3>AlphaPose Project</h3>
+                    <p>Human Pose Estimation Using AlphaPose</p>
                 </div>
             </div>
 
@@ -341,16 +340,16 @@
                 <div class="dual-video-container">
                     <video controls controlsList="novolume" preload="metadata" playsinline muted>
                         <source src="assets/videos/mobile9_compressed.mp4" type="video/mp4">
-                        您的浏览器不支持视频标签。
+                        Your browser does not support the video tag.
                     </video>
                     <video controls controlsList="novolume" preload="metadata" playsinline muted>
                         <source src="assets/videos/mobile8_compressed.mp4" type="video/mp4">
-                        您的浏览器不支持视频标签。
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="description">
-                    <h3>多视角人体姿态估计</h3>
-                    <p>左：摄像头1视角 | 右：摄像头2视角</p>
+                    <h3>Multi-view Human Pose Estimation</h3>
+                    <p>Left: Camera 1 View | Right: Camera 2 View</p>
                 </div>
             </div>
 
@@ -358,16 +357,16 @@
                 <div class="dual-video-container">
                     <video controls controlsList="novolume" preload="metadata" playsinline muted>
                         <source src="assets/videos/cam1_1_compressed.mp4" type="video/mp4">
-                        您的浏览器不支持视频标签。
+                        Your browser does not support the video tag.
                     </video>
                     <video controls preload="metadata" playsinline>
                         <source src="assets/videos/CHYU_compressed.mp4" type="video/mp4">
-                        您的浏览器不支持视频标签。
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="description">
-                    <h3>骨架检测对比演示</h3>
-                    <p>左：原始视频 | 右：基于深度学习的人体姿态估计效果</p>
+                    <h3>Skeleton Detection Comparison</h3>
+                    <p>Left: Original Video | Right: Deep Learning-based Human Pose Estimation Results</p>
                 </div>
             </div>
         </div>
